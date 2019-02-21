@@ -1,4 +1,4 @@
-import java.awt.Color;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.InputEvent;
@@ -16,7 +16,7 @@ public class BarreMenu extends JPanel {
 	private JMenu menuFichier, menuAPropos;
 	private JMenuItem optionNouveau, optionEnregistrer, optionEnregistrerSous, optionOuvrir, optionQuitter;
 
-	private JMenuBar createMenuBar() {
+	public BarreMenu() {
 		// création de la barre de Menu
 		barreMenu = new JMenuBar();
 
@@ -49,9 +49,8 @@ public class BarreMenu extends JPanel {
 
 		optionEnregistrer.addActionListener(new ActionListener() {
 			@Override
-			// TODO Ajouter un action pour l'option Enregistrer
 			public void actionPerformed(ActionEvent e) {
-
+				// TODO Ajouter un action pour l'option Enregistrer
 			}
 
 		});
@@ -109,7 +108,6 @@ public class BarreMenu extends JPanel {
 			}
 		});
 
-		return barreMenu;
 	}
 
 }
