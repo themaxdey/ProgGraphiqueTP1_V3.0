@@ -12,7 +12,7 @@ public class BarreOutils extends JPanel {
 	private static final long serialVersionUID = 1L;
 
 	private JToolBar barreOutils;
-	private JToggleButton btRouge, btVert, btBleu, btBlanc, btJaune, btNoir, btOvale, btCarrer, btTrait;
+	private JToggleButton btRouge, btVert, btBleu, btBlanc, btGris, btNoir, btOvale, btCarrer, btLigne;
 	private ButtonGroup groupeCouleursContours, groupeFormes, groupeCouleursRemplissage;
 
 	public BarreOutils() {
@@ -26,7 +26,7 @@ public class BarreOutils extends JPanel {
 		groupeFormes = new ButtonGroup();
 
 		// Création et ajout du bouton rouge à la barre d'outils
-		btRouge = new JToggleButton(new ImageIcon(BarreOutils.class.getResource("img/rouge.gif")));
+		btRouge = new JToggleButton(new ImageIcon(BarreOutils.class.getResource("img/red.png")));
 		btRouge.addActionListener(new ActionListener() {
 
 			@Override
@@ -41,7 +41,7 @@ public class BarreOutils extends JPanel {
 		barreOutils.add(btRouge);
 
 		// Création et ajout du bouton vert à la barre d'outils
-		btVert = new JToggleButton(new ImageIcon(BarreOutils.class.getResource("img/vert.gif")));
+		btVert = new JToggleButton(new ImageIcon(BarreOutils.class.getResource("img/green.png")));
 		btVert.addActionListener(new ActionListener() {
 
 			@Override
@@ -56,7 +56,7 @@ public class BarreOutils extends JPanel {
 		barreOutils.add(btVert);
 
 		// Création et ajout du bouton bleu à la barre d'outils
-		btBleu = new JToggleButton(new ImageIcon(BarreOutils.class.getResource("img/bleu.gif")));
+		btBleu = new JToggleButton(new ImageIcon(BarreOutils.class.getResource("img/blue.png")));
 		btBleu.addActionListener(new ActionListener() {
 
 			@Override
@@ -71,7 +71,7 @@ public class BarreOutils extends JPanel {
 		barreOutils.add(btBleu);
 
 		// Création et ajout du bouton blanc à la barre d'outils
-		btBlanc = new JToggleButton(new ImageIcon(BarreOutils.class.getResource("img/blanc.gif")));
+		btBlanc = new JToggleButton(new ImageIcon(BarreOutils.class.getResource("img/white.png")));
 		btBlanc.addActionListener(new ActionListener() {
 
 			@Override
@@ -86,8 +86,8 @@ public class BarreOutils extends JPanel {
 		barreOutils.add(btBlanc);
 
 		// Création et ajout du bouton blanc à la barre d'outils
-		btJaune = new JToggleButton(new ImageIcon(BarreOutils.class.getResource("img/jaune.gif")));
-		btJaune.addActionListener(new ActionListener() {
+		btGris = new JToggleButton(new ImageIcon(BarreOutils.class.getResource("img/gris.png")));
+		btGris.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -95,13 +95,13 @@ public class BarreOutils extends JPanel {
 
 			}
 		});
-		btJaune.setToolTipText("Jaune");
-		groupeCouleursContours.add(btJaune);
-		groupeCouleursRemplissage.add(btJaune);
-		barreOutils.add(btJaune);
+		btGris.setToolTipText("Jaune");
+		groupeCouleursContours.add(btGris);
+		groupeCouleursRemplissage.add(btGris);
+		barreOutils.add(btGris);
 
 		// Création et ajout du bouton blanc à la barre d'outils
-		btNoir = new JToggleButton(new ImageIcon(BarreOutils.class.getResource("img/noir.gif")));
+		btNoir = new JToggleButton(new ImageIcon(BarreOutils.class.getResource("img/black.png")));
 		btNoir.addActionListener(new ActionListener() {
 
 			@Override
@@ -116,7 +116,7 @@ public class BarreOutils extends JPanel {
 		barreOutils.add(btNoir);
 
 		// Création et ajout du bouton Ovale à la barre d'outils
-		btOvale = new JToggleButton(new ImageIcon(BarreOutils.class.getResource("img/ovale.gif")));
+		btOvale = new JToggleButton(new ImageIcon(BarreOutils.class.getResource("img/oval.png")));
 		btOvale.addActionListener(new ActionListener() {
 
 			@Override
@@ -130,7 +130,7 @@ public class BarreOutils extends JPanel {
 		barreOutils.add(btOvale);
 
 		// Création et ajout du bouton Carré à la barre d'outils
-		btCarrer = new JToggleButton(new ImageIcon(BarreOutils.class.getResource("img/carrer.gif")));
+		btCarrer = new JToggleButton(new ImageIcon(BarreOutils.class.getResource("img/square.png")));
 		btCarrer.addActionListener(new ActionListener() {
 
 			@Override
@@ -144,8 +144,8 @@ public class BarreOutils extends JPanel {
 		barreOutils.add(btCarrer);
 
 		// Création et ajout du bouton Trait droit à la barre d'outils
-		btTrait = new JToggleButton(new ImageIcon(BarreOutils.class.getResource("img/trait.gif")));
-		btTrait.addActionListener(new ActionListener() {
+		btLigne = new JToggleButton(new ImageIcon(BarreOutils.class.getResource("img/line.png")));
+		btLigne.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -153,8 +153,8 @@ public class BarreOutils extends JPanel {
 
 			}
 		});
-		btTrait.setToolTipText("Trait droit");
-		groupeFormes.add(btTrait);
-		barreOutils.add(btTrait);
+		btLigne.setToolTipText("Ligne droite");
+		groupeFormes.add(btLigne);
+		barreOutils.add(btLigne);
 	}
 }
