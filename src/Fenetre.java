@@ -1,3 +1,5 @@
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
@@ -8,28 +10,25 @@ public class Fenetre extends JFrame{
 	public Fenetre() {
 		
 		super("AAA");
+		
 		setSize(600, 400);
 		ImageIcon image = new ImageIcon(Fenetre.class.getResource("icon.png"));
 		setIconImage(image.getImage());
+		setLayout(new FlowLayout());
 		
-		ZoneDessin zoneDessin = new ZoneDessin();
+		ZoneDessin zoneDessin = new ZoneDessin(this.getSize());
 		BarreOutils barreOutils = new BarreOutils();
 		BarreMenu barreMenu = new BarreMenu();
 		
 		add(barreMenu);
-		add(barreOutils);
-		add(zoneDessin);
+		add(barreOutils, BorderLayout.CENTER);
+		add(zoneDessin, BorderLayout.CENTER);
+		/*
+		setContentPane(barreMenu);
+		setContentPane(barreOutils);
+		setContentPane(zoneDessin);*/
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	}
-	
-	public Fenetre(String cheminFichier) {
-		
-		//super(nomFichier)
-		//setSize()
-		
-		ZoneDessin zoneDessin = new ZoneDessin();
-		BarreOutils barreOutils = new BarreOutils();
-		BarreMenu barreMenu = new BarreMenu();
 	}
 
 }
