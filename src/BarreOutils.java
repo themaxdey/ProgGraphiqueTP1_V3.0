@@ -26,7 +26,7 @@ public class BarreOutils extends JPanel {
 		groupeFormes = new ButtonGroup();
 
 		// Création et ajout du bouton rouge à la barre d'outils
-		btRouge = new JToggleButton(new ImageIcon(BarreOutils.class.getResource("img/red.png")));
+		btRouge = new JToggleButton(new ImageIcon(BarreOutils.class.getResource("img/red.gif")));
 		btRouge.addActionListener(new ActionListener() {
 
 			@Override
