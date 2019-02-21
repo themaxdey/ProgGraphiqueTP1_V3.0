@@ -20,21 +20,15 @@ public class Fenetre extends JFrame{
 		BarreOutils barreOutils = new BarreOutils();
 		BarreMenu barreMenu = new BarreMenu();
 		
-		add(barreMenu, BorderLayout.NORTH);
+		add(barreMenu);
 		add(barreOutils, BorderLayout.CENTER);
 		add(zoneDessin, BorderLayout.CENTER);
+		/*
+		setContentPane(barreMenu);
+		setContentPane(barreOutils);
+		setContentPane(zoneDessin);*/
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	}
-	
-	public Fenetre(String cheminFichier) {
-		
-		//super(nomFichier)
-		//setSize()
-		
-		//ZoneDessin zoneDessin = new ZoneDessin(this.getSize(), image du fichier);
-		BarreOutils barreOutils = new BarreOutils();
-		BarreMenu barreMenu = new BarreMenu();
 	}
 
 }
