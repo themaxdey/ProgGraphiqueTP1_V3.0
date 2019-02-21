@@ -21,7 +21,7 @@ public class Fenetre extends JFrame{
 		BarreMenu barreMenu = new BarreMenu();
 		
 		add(barreMenu);
-		add(barreOutils, BorderLayout.CENTER);
+		add(barreOutils, BorderLayout.NORTH);
 		add(zoneDessin, BorderLayout.CENTER);
 		/*
 		setContentPane(barreMenu);
