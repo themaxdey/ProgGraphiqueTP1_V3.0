@@ -10,7 +10,7 @@ public class Fenetre extends JFrame{
 	
 	public Fenetre() {
 		
-		super("AAA");
+		super("Paint REBOOT");
 		
 		setSize(600, 400);
 		ImageIcon image = new ImageIcon(Fenetre.class.getResource("img/icon.png"));
