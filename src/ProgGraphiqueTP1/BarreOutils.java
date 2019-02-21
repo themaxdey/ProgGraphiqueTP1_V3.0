@@ -87,7 +87,7 @@ public class BarreOutils extends JPanel {
 		barreOutils.add(btBlanc);
 
 		// Création et ajout du bouton blanc à la barre d'outils
-		btGris = new JToggleButton(new ImageIcon(BarreOutils.class.getResource("img/gris.png")));
+		btGris = new JToggleButton(new ImageIcon(BarreOutils.class.getResource("img/grey.png")));
 		btGris.addActionListener(new ActionListener() {
 
 			@Override
