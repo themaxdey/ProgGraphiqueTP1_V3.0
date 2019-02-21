@@ -1,6 +1,7 @@
 package ProgGraphiqueTP1;
-import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+
+import javax.swing.Box;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
@@ -22,12 +23,10 @@ public class Fenetre extends JFrame{
 		BarreMenu barreMenu = new BarreMenu();
 		
 		add(barreMenu);
-		add(barreOutils, BorderLayout.NORTH);
-		add(zoneDessin, BorderLayout.CENTER);
-		/*
-		setContentPane(barreMenu);
-		setContentPane(barreOutils);
-		setContentPane(zoneDessin);*/
+		add(Box.createVerticalStrut(15));
+		add(barreOutils);
+		add(Box.createVerticalStrut(15));
+		add(zoneDessin);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
