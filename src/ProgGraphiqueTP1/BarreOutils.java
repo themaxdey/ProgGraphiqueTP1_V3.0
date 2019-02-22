@@ -9,17 +9,19 @@ import javax.swing.JToggleButton;
 import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
 
-public class BarreOutils extends JPanel {
+public class BarreOutils extends JToolBar {
 	private static final long serialVersionUID = 1L;
 
 	private JToolBar barreOutils;
 	private JToggleButton btRouge, btVert, btBleu, btBlanc, btGris, btNoir, btOvale, btCarrer, btLigne;
 	private ButtonGroup groupeCouleursContours, groupeFormes, groupeCouleursRemplissage;
+	JPanel panneau;
 
 	public BarreOutils() {
+		super();
 		barreOutils = new JToolBar();
 		barreOutils.setFloatable(false);
-		barreOutils.setOrientation(SwingConstants.HORIZONTAL);
+		//barreOutils.setOrientation(SwingConstants.HORIZONTAL);
 
 		// Création des groupes
 		groupeCouleursContours = new ButtonGroup();

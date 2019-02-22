@@ -8,8 +8,9 @@ import javax.swing.JPanel;
 public class ZoneDessin extends JPanel{
 	private static final long serialVersionUID = 1L;
 	
-	public ZoneDessin(Dimension dimension) {
+	public ZoneDessin() {
 		setBackground(Color.WHITE);
+		setSize(1400, 400);
 		setBorder(BorderFactory.createRaisedBevelBorder());
 	}
 	
