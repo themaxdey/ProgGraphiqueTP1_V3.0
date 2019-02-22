@@ -1,4 +1,11 @@
-package ProgGraphiqueTP1;
+
+
+
+
+// Cette classe ne s'integre pas avec le projet pour une raison inconnu. Nous essayerons de l'integrer plus tard. En attendant, nous utilisons le toolbar de facon interne.
+
+
+/*package ProgGraphiqueTP1;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -161,3 +168,4 @@ public class BarreOutils extends JToolBar {
 		barreOutils.add(btLigne);
 	}
 }
+*/
