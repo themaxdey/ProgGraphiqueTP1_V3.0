@@ -1,16 +1,11 @@
 package ProgGraphiqueTP1;
 
 import java.awt.BorderLayout;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.JToggleButton;
 import javax.swing.JToolBar;
 
@@ -49,10 +44,11 @@ public class Fenetre extends JFrame {
 	}
 
 	public JToolBar createToolBar() {
+		
+		//On voulait initialement que la barre outil soit externe sauf qu'on arrive pas a le faire fonctionne d'une autre facon que interne... A regler plus tard
 
 		barreOutils = new JToolBar();
 		barreOutils.setFloatable(false);
-		// barreOutils.setOrientation(SwingConstants.HORIZONTAL);
 
 		// Création des groupes
 		groupeCouleursContours = new ButtonGroup();
