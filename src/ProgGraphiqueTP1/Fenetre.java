@@ -33,7 +33,7 @@ public class Fenetre extends JFrame {
 		setIconImage(image.getImage());
 		
 		Container conteneur = getContentPane();
-
+		zoneDessin = new ZoneDessin();
 		barreMenu = new BarreMenu();
 		setJMenuBar(barreMenu);
 
@@ -233,7 +233,7 @@ public class Fenetre extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				zoneDessin.setTypeForme('c');
+				zoneDessin.setTypeForme('r');
 
 			}
 		});

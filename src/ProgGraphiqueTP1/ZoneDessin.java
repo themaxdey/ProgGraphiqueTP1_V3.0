@@ -108,10 +108,10 @@ public class ZoneDessin extends JPanel{
 				forme = new Trait(e.getX(), e.getY(), contour, remplissage);
 				break;
 			case 'r':
-				forme = new Rectangle(e.getX(), getY(), contour, remplissage);
+				forme = new Rectangle(e.getX(), e.getY(), remplissage, contour);
 				break;
 			case 'o':
-				forme = new Ovale(e.getX(), getY(), contour, remplissage);
+				forme = new Ovale(e.getX(), e.getY(), contour, remplissage);
 				break;
 			}
 			listeFormes.add(forme);
