@@ -1,6 +1,8 @@
 package ProgGraphiqueTP1;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.ButtonGroup;
@@ -19,6 +21,8 @@ public class Fenetre extends JFrame {
 	private JToggleButton btRouge, btVert, btBleu, btBlanc, btGris, btNoir, btRougeC, btVertC, btBleuC, btBlancC,
 			btGrisC, btNoirC, btOvale, btCarrer, btLigne;
 	private ButtonGroup groupeCouleursContours, groupeFormes, groupeCouleursRemplissage;
+	
+	private ZoneDessin zoneDessin;
 
 	public Fenetre() {
 
@@ -27,8 +31,8 @@ public class Fenetre extends JFrame {
 		setSize(1400, 787);
 		ImageIcon image = new ImageIcon(Fenetre.class.getResource("img/icon.png"));
 		setIconImage(image.getImage());
-
-		ZoneDessin zoneDessin = new ZoneDessin();
+		
+		Container conteneur = getContentPane();
 
 		barreMenu = new BarreMenu();
 		setJMenuBar(barreMenu);
@@ -39,6 +43,7 @@ public class Fenetre extends JFrame {
 		add(barreOutils, BorderLayout.NORTH);
 
 		add(zoneDessin);
+		conteneur.add(zoneDessin);
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
@@ -63,8 +68,7 @@ public class Fenetre extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
-				
+				zoneDessin.setRemplissage(Color.red);
 			}
 		});
 
@@ -76,7 +80,7 @@ public class Fenetre extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				zoneDessin.setRemplissage(Color.green);
 			}
 		});
 
@@ -88,7 +92,7 @@ public class Fenetre extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				zoneDessin.setRemplissage(Color.blue);
 
 			}
 		});
@@ -101,7 +105,7 @@ public class Fenetre extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				zoneDessin.setRemplissage(Color.white);
 
 			}
 		});
@@ -114,7 +118,7 @@ public class Fenetre extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				zoneDessin.setRemplissage(Color.gray);
 
 			}
 		});
@@ -127,7 +131,7 @@ public class Fenetre extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				zoneDessin.setRemplissage(Color.black);
 
 			}
 		});
@@ -140,7 +144,7 @@ public class Fenetre extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				zoneDessin.setContour(Color.red);
 
 			}
 		});
@@ -153,7 +157,7 @@ public class Fenetre extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				zoneDessin.setContour(Color.green);
 
 			}
 		});
@@ -166,8 +170,7 @@ public class Fenetre extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-
+				zoneDessin.setContour(Color.blue);
 			}
 		});
 
@@ -179,8 +182,7 @@ public class Fenetre extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-
+				zoneDessin.setContour(Color.white);
 			}
 		});
 
@@ -192,7 +194,7 @@ public class Fenetre extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				zoneDessin.setContour(Color.gray);
 
 			}
 		});
@@ -205,7 +207,7 @@ public class Fenetre extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				zoneDessin.setContour(Color.black);
 
 			}
 		});
@@ -218,7 +220,7 @@ public class Fenetre extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				zoneDessin.setTypeForme('o');
 
 			}
 		});
@@ -231,7 +233,7 @@ public class Fenetre extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				zoneDessin.setTypeForme('c');
 
 			}
 		});
@@ -244,7 +246,7 @@ public class Fenetre extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				zoneDessin.setTypeForme('t');
 
 			}
 		});
