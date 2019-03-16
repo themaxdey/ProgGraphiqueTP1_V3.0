@@ -91,7 +91,7 @@ public class BarreMenu extends JMenuBar {
 		optionQuitter.setMnemonic(KeyEvent.VK_Q);
 		optionQuitter.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q, InputEvent.CTRL_DOWN_MASK));
 
-		optionOuvrir.addActionListener(new ActionListener() {
+		optionQuitter.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				int input = JOptionPane.showConfirmDialog(null, "Voulez-vous vraiment quitter ?");
