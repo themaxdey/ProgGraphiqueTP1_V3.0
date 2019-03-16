@@ -2,9 +2,9 @@ package ProgGraphiqueTP1;
 
 
 /**
- * Classe Main.java sert a initier demarrer l'application
+ * Classe Main.java sert a initier/demarrer l'application
  * 
- * @author Maxime Dery & Jean-Sebastien Beaulne
+ * @author Maxime Dery & Jean-S\u00e9bastien Beaulne
  *
  */
 public class Main {

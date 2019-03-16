@@ -1,14 +1,20 @@
 package ProgGraphiqueTP1;
 
+import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
-
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+import javax.swing.JFileChooser;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 
 public class BarreMenu extends JMenuBar {
@@ -16,10 +22,15 @@ public class BarreMenu extends JMenuBar {
 	private JMenu menuFichier, menuAutres;
 	private JMenuItem optionNouveau, optionEnregistrer, optionEnregistrerSous, optionOuvrir, optionQuitter,
 			optionApropos;
-	private boolean nouveauDoc = true;
+	private boolean nouveauFichier = true;
+	private GestionFichier gestionnaire = new GestionFichier();
+	private JPanel panneau;
+	private File file;
+	private BufferedImage image;
 
-	public BarreMenu() {
+	public BarreMenu(JPanel panneau) {
 		super();
+		this.panneau = panneau;
 
 		// création du menu Fichier
 		menuFichier = new JMenu("Fichier");
@@ -46,29 +57,13 @@ public class BarreMenu extends JMenuBar {
 		optionEnregistrer.setMnemonic(KeyEvent.VK_S);
 		optionEnregistrer.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.CTRL_DOWN_MASK));
 		// menuFichier.addSeparator();
-		optionEnregistrer.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				if (nouveauDoc) {
-					//use enregistrer sous
-				} else {
-					//Enregistrer
-				}
-			}
-
-		});
+		optionEnregistrer.addActionListener(gestionnaire);
 
 		// Création et ajout de l'options Enregistrer Sous
 		optionEnregistrerSous = new JMenuItem("Enregistrer Sous");
 		menuFichier.add(optionEnregistrerSous);
 
-		optionEnregistrerSous.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Ajouter un action pour l'option Enregistrer Sous
-			}
-
-		});
+		optionEnregistrerSous.addActionListener(gestionnaire);
 
 		// Création et ajout de l'options Ouvrir
 		optionOuvrir = new JMenuItem("Ouvrir");
@@ -77,13 +72,7 @@ public class BarreMenu extends JMenuBar {
 		optionOuvrir.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, InputEvent.CTRL_DOWN_MASK));
 		menuFichier.addSeparator();
 
-		optionOuvrir.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Ajouter un action pour l'option Ouvrir
-			}
-
-		});
+		optionOuvrir.addActionListener(gestionnaire);
 
 		// Création et ajout de l'options Quitter
 		optionQuitter = new JMenuItem("Quitter");
@@ -115,12 +104,88 @@ public class BarreMenu extends JMenuBar {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				JOptionPane.showMessageDialog(null,
-						"\nPaint REBOOT" + "\r\nPar Maxime Dery et Jean-Sebastien" + "\r\nVersion 1.3", "À propos",
+						"\nPaint REBOOT" + "\r\nPar Jean-S\u00e9bastien Beaulne et Maxime Dery" + "\r\nVersion 1.3", "À propos",
 						JOptionPane.INFORMATION_MESSAGE);
 
 			}
 		});
 
 	}
+	
+	private class GestionFichier implements ActionListener {
 
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			if (e.getSource() == optionEnregistrerSous)
+				enregistrerSous();
+			else if (e.getSource() == optionOuvrir)
+				ouvrir();
+			else if(e.getSource() == optionEnregistrer)
+				enregistrer();
+		}
+		
+		private void enregistrer() {
+			
+			if(!nouveauFichier) {
+				enregistrerSous();
+				nouveauFichier = true;
+			}else {
+				BufferedImage bImg = new BufferedImage(panneau.getWidth(), panneau.getHeight(), BufferedImage.TYPE_INT_RGB);
+				Graphics2D cg = bImg.createGraphics();
+				panneau.paintAll(cg);
+				
+				try {
+					ImageIO.write(bImg, "png", file);
+				} catch (IOException e) {
+					JOptionPane.showMessageDialog(panneau, "Probl\\u00E9me d'ouverture du fichier");
+				}
+			}
+			
+		}
+
+		private void enregistrerSous() {
+			JFileChooser choixFichier = new JFileChooser();
+			// Afficher la boîte de dialogue saveDialog dans le composant texte
+			if (choixFichier.showSaveDialog(panneau) == JFileChooser.APPROVE_OPTION) {
+				// récupérer le nom du fichier
+				file = choixFichier.getSelectedFile();
+
+				BufferedImage bImg = new BufferedImage(panneau.getWidth(), panneau.getHeight(), BufferedImage.TYPE_INT_RGB);
+				Graphics2D cg = bImg.createGraphics();
+				panneau.paintAll(cg);
+				
+				try {
+					ImageIO.write(bImg, "png", file);
+				} catch (IOException e) {
+					JOptionPane.showMessageDialog(panneau, "Probl\\u00E9me de sauvegarde du fichier");
+				}
+			}
+
+		}
+
+		private void ouvrir() {
+			// Afficher la boîte de dialogue openDialog
+			JFileChooser choixFichier = new JFileChooser();
+			if (choixFichier.showOpenDialog(panneau) == JFileChooser.APPROVE_OPTION) {
+				// récupérer le nom du fichier
+				file = choixFichier.getSelectedFile();
+				
+				try {
+					image = ImageIO.read(file);
+				} catch (IOException e) {
+					JOptionPane.showMessageDialog(panneau, "Probl\\u00E9me d'ouverture du fichier");
+				}
+				
+				paint();
+				
+			}
+		}
+		
+		protected void paint() {
+			panneau.paintComponents(panneau.getGraphics());
+			panneau.getGraphics().drawImage(image, 0, 0, panneau);
+			repaint();
+			
+		}
+	}
 }

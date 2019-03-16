@@ -34,7 +34,7 @@ public class Fenetre extends JFrame {
 		
 		Container conteneur = getContentPane();
 		zoneDessin = new ZoneDessin();
-		barreMenu = new BarreMenu();
+		barreMenu = new BarreMenu(zoneDessin);
 		setJMenuBar(barreMenu);
 
 		// barreOutils = new BarreOutils();
