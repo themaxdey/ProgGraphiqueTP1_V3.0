@@ -9,6 +9,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -105,8 +106,7 @@ public class BarreMenu extends JMenuBar {
 			public void actionPerformed(ActionEvent e) {
 				JOptionPane.showMessageDialog(null,
 						"\nPaint REBOOT" + "\r\nPar Jean-S\u00e9bastien Beaulne et Maxime Dery" + "\r\nVersion 1.3", "À propos",
-						JOptionPane.INFORMATION_MESSAGE);
-
+						JOptionPane.INFORMATION_MESSAGE, new ImageIcon(Fenetre.class.getResource("img/icon2.png")));
 			}
 		});
 
@@ -176,16 +176,10 @@ public class BarreMenu extends JMenuBar {
 					JOptionPane.showMessageDialog(panneau, "Probl\\u00E9me d'ouverture du fichier");
 				}
 				
-				paint();
+				panneau.paintComponents(panneau.getGraphics());
+				panneau.getGraphics().drawImage(image, 0, 0, panneau);
 				
 			}
-		}
-		
-		protected void paint() {
-			panneau.paintComponents(panneau.getGraphics());
-			panneau.getGraphics().drawImage(image, 0, 0, panneau);
-			repaint();
-			
 		}
 	}
 }
