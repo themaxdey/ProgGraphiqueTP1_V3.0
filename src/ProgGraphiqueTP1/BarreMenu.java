@@ -103,7 +103,7 @@ public class BarreMenu extends JMenuBar {
 
 		});
 
-		// création du menu À Propos et de l'option
+		// création du menu À Propos et de l'affichage
 		menuAutres = new JMenu("Autres");
 		add(menuAutres);
 
@@ -111,7 +111,7 @@ public class BarreMenu extends JMenuBar {
 		menuAutres.add(optionApropos);
 		optionApropos.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, InputEvent.CTRL_DOWN_MASK));
 
-		menuAutres.addActionListener(new ActionListener() {
+		optionApropos.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				JOptionPane.showMessageDialog(null,
