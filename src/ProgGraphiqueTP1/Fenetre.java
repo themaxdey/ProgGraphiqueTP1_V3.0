@@ -23,7 +23,10 @@ public class Fenetre extends JFrame {
 	private ButtonGroup groupeCouleursContours, groupeFormes, groupeCouleursRemplissage;
 	
 	private ZoneDessin zoneDessin;
-
+	
+	/**
+	 * Constructeur de la fenetre avec les parametres concerner
+	 */
 	public Fenetre() {
 
 		super("Paint REBOOT");
@@ -37,9 +40,8 @@ public class Fenetre extends JFrame {
 		barreMenu = new BarreMenu(zoneDessin);
 		setJMenuBar(barreMenu);
 
-		// barreOutils = new BarreOutils();
+
 		barreOutils = createToolBar();
-		// barreOutils.setSize(1400, 100);
 		add(barreOutils, BorderLayout.NORTH);
 
 		add(zoneDessin);
@@ -47,7 +49,11 @@ public class Fenetre extends JFrame {
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
-
+	/**
+	 * Methode servant a generer une barre d'outil 
+	 * 
+	 * @return barreOutil
+	 */
 	public JToolBar createToolBar() {
 		
 		//On voulait initialement que la barre outil soit externe sauf qu'on arrive pas a le faire fonctionne d'une autre facon que interne... A regler plus tard

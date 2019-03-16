@@ -26,6 +26,9 @@ public class ZoneDessin extends JPanel{
 	private char typeForme = 't';
 	MouseEvent clic;
 	
+	/**
+	 * Constructeur de la zone de dessin (ou on dessine)
+	 */
 	public ZoneDessin() {
 		super();
 		setBackground(Color.WHITE);

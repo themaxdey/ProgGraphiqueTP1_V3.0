@@ -18,6 +18,11 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 
+/**\
+ * 
+ * Methode pour generer la barre de menu avec les sous-divisions
+ *
+ */
 public class BarreMenu extends JMenuBar {
 	private static final long serialVersionUID = 1L;
 	private JMenu menuFichier, menuAutres;
@@ -105,13 +110,14 @@ public class BarreMenu extends JMenuBar {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				JOptionPane.showMessageDialog(null,
-						"\nPaint REBOOT" + "\r\nPar Jean-S\u00e9bastien Beaulne et Maxime Dery" + "\r\nVersion 1.3", "À propos",
-						JOptionPane.INFORMATION_MESSAGE, new ImageIcon(Fenetre.class.getResource("img/icon2.png")));
+						"\nPaint REBOOT" + "\r\nPar Jean-S\u00e9bastien Beaulne et Maxime Dery" + "\r\nVersion 1.3",
+						"À propos", JOptionPane.INFORMATION_MESSAGE,
+						new ImageIcon(Fenetre.class.getResource("img/icon2.png")));
 			}
 		});
 
 	}
-	
+
 	private class GestionFichier implements ActionListener {
 
 		@Override
@@ -120,27 +126,28 @@ public class BarreMenu extends JMenuBar {
 				enregistrerSous();
 			else if (e.getSource() == optionOuvrir)
 				ouvrir();
-			else if(e.getSource() == optionEnregistrer)
+			else if (e.getSource() == optionEnregistrer)
 				enregistrer();
 		}
-		
+
 		private void enregistrer() {
-			
-			if(nouveauFichier) {
+
+			if (nouveauFichier) {
 				enregistrerSous();
 				nouveauFichier = false;
-			}else {
-				BufferedImage bImg = new BufferedImage(panneau.getWidth(), panneau.getHeight(), BufferedImage.TYPE_INT_RGB);
+			} else {
+				BufferedImage bImg = new BufferedImage(panneau.getWidth(), panneau.getHeight(),
+						BufferedImage.TYPE_INT_RGB);
 				Graphics2D cg = bImg.createGraphics();
 				panneau.paintAll(cg);
-				
+
 				try {
 					ImageIO.write(bImg, "png", file);
 				} catch (IOException e) {
 					JOptionPane.showMessageDialog(panneau, "Probl\\u00E9me d'ouverture du fichier");
 				}
 			}
-			
+
 		}
 
 		private void enregistrerSous() {
@@ -150,10 +157,11 @@ public class BarreMenu extends JMenuBar {
 				// récupérer le nom du fichier
 				file = choixFichier.getSelectedFile();
 
-				BufferedImage bImg = new BufferedImage(panneau.getWidth(), panneau.getHeight(), BufferedImage.TYPE_INT_RGB);
+				BufferedImage bImg = new BufferedImage(panneau.getWidth(), panneau.getHeight(),
+						BufferedImage.TYPE_INT_RGB);
 				Graphics2D cg = bImg.createGraphics();
 				panneau.paintAll(cg);
-				
+
 				try {
 					ImageIO.write(bImg, "png", file);
 				} catch (IOException e) {
@@ -169,16 +177,16 @@ public class BarreMenu extends JMenuBar {
 			if (choixFichier.showOpenDialog(panneau) == JFileChooser.APPROVE_OPTION) {
 				// récupérer le nom du fichier
 				file = choixFichier.getSelectedFile();
-				
+
 				try {
 					image = ImageIO.read(file);
 				} catch (IOException e) {
 					JOptionPane.showMessageDialog(panneau, "Probl\\u00E9me d'ouverture du fichier");
 				}
-				
+
 				panneau.paintComponents(panneau.getGraphics());
 				panneau.getGraphics().drawImage(image, 0, 0, panneau);
-				
+
 			}
 		}
 	}
