@@ -126,9 +126,9 @@ public class BarreMenu extends JMenuBar {
 		
 		private void enregistrer() {
 			
-			if(!nouveauFichier) {
+			if(nouveauFichier) {
 				enregistrerSous();
-				nouveauFichier = true;
+				nouveauFichier = false;
 			}else {
 				BufferedImage bImg = new BufferedImage(panneau.getWidth(), panneau.getHeight(), BufferedImage.TYPE_INT_RGB);
 				Graphics2D cg = bImg.createGraphics();
