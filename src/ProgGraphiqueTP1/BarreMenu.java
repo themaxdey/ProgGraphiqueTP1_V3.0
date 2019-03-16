@@ -8,12 +8,15 @@ import java.awt.event.KeyEvent;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 
 public class BarreMenu extends JMenuBar {
 	private static final long serialVersionUID = 1L;
-	private JMenu menuFichier, menuAPropos;
-	private JMenuItem optionNouveau, optionEnregistrer, optionEnregistrerSous, optionOuvrir, optionQuitter;
+	private JMenu menuFichier, menuAutres;
+	private JMenuItem optionNouveau, optionEnregistrer, optionEnregistrerSous, optionOuvrir, optionQuitter,
+			optionApropos;
+	private boolean nouveauDoc = true;
 
 	public BarreMenu() {
 		super();
@@ -22,7 +25,7 @@ public class BarreMenu extends JMenuBar {
 		menuFichier = new JMenu("Fichier");
 		menuFichier.setMnemonic(KeyEvent.VK_F);
 		add(menuFichier);
-		
+
 		// Création et ajout de l'options Nouveau
 		optionNouveau = new JMenuItem("Nouveau");
 		optionNouveau.setMnemonic(KeyEvent.VK_N);
@@ -42,11 +45,15 @@ public class BarreMenu extends JMenuBar {
 		menuFichier.add(optionEnregistrer);
 		optionEnregistrer.setMnemonic(KeyEvent.VK_S);
 		optionEnregistrer.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.CTRL_DOWN_MASK));
-		//menuFichier.addSeparator();
+		// menuFichier.addSeparator();
 		optionEnregistrer.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Ajouter un action pour l'option Enregistrer
+				if (nouveauDoc) {
+					//use enregistrer sous
+				} else {
+					//Enregistrer
+				}
 			}
 
 		});
@@ -54,7 +61,7 @@ public class BarreMenu extends JMenuBar {
 		// Création et ajout de l'options Enregistrer Sous
 		optionEnregistrerSous = new JMenuItem("Enregistrer Sous");
 		menuFichier.add(optionEnregistrerSous);
-		
+
 		optionEnregistrerSous.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -83,27 +90,37 @@ public class BarreMenu extends JMenuBar {
 		menuFichier.add(optionQuitter);
 		optionQuitter.setMnemonic(KeyEvent.VK_Q);
 		optionQuitter.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q, InputEvent.CTRL_DOWN_MASK));
-		
+
 		optionOuvrir.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Ajouter un action pour l'option Quitter
+				int input = JOptionPane.showConfirmDialog(null, "Voulez-vous vraiment quitter ?");
+
+				if (input == 0) {
+					System.exit(0);
+				}
 			}
 
 		});
 
-		// création du menu À Propos
-		menuAPropos = new JMenu("À Propos");
-		add(menuAPropos);
+		// création du menu À Propos et de l'option
+		menuAutres = new JMenu("Autres");
+		add(menuAutres);
 
-		menuAPropos.addActionListener(new ActionListener() {
+		optionApropos = new JMenuItem("À propos");
+		menuAutres.add(optionApropos);
+		optionApropos.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, InputEvent.CTRL_DOWN_MASK));
+
+		menuAutres.addActionListener(new ActionListener() {
 			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				// TODO Ajouter un action pour l'affichage du À Propos
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null,
+						"\nPaint REBOOT" + "\r\nPar Maxime Dery et Jean-Sebastien" + "\r\nVersion 1.3", "À propos",
+						JOptionPane.INFORMATION_MESSAGE);
 
 			}
 		});
-		
+
 	}
 
 }
